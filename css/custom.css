@@ -248,6 +248,17 @@ label {
 	margin: 33px auto;
 }
 
+.heading-link {
+	color: var(--color-primary);
+	text-decoration: none;
+}
+
+.chevron-btn {
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
 @media (min-width: 1400px) {
 
 	.container,
