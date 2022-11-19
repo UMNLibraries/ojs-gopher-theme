@@ -27,6 +27,24 @@ class UmnThemePlugin extends ThemePlugin
 	public function init()
 	{
 		$this->addMenuArea(['primary', 'user']);
+
+		// CSS and JS
+		// TODO: Uncommented for dev
+//		$this->addStyle(
+//			'font-body',
+//			"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap",
+//			['baseUrl' => '']
+//		);
+
+		// TODO: Should use minified version instead
+		$this->addStyle('font-awesome', 'css/fa_all.css');
+		$this->addStyle('bootstrap-css', 'css/bootstrap.min.css');
+		$this->addStyle('custom-css', 'css/custom.css');
+
+		$this->addScript('jquery', 'js/jquery.js');
+
+		// TODO: Should point to CDN minified version rather than local
+		$this->addScript('bootstrap-js', 'js/bootstrap.bundle.min.js');
 	}
 
 	/**
