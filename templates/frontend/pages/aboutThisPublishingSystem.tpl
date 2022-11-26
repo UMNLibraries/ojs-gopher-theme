@@ -15,7 +15,7 @@
 
 {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.aboutSoftware"}
 
-<div class="container px-4 pt-4">
+<div class="container mt-4 mt-md-5 px-4">
 	<div class="d-flex justify-content-between">
 		<h2>
             {translate key="about.aboutSoftware"}

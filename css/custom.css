@@ -57,6 +57,18 @@ p {
 	line-height: 1.5;
 }
 
+a {
+	color: var(--color-primary);
+}
+
+a:hover {
+	color: #000;
+}
+
+ul {
+	list-style: inside;
+}
+
 .bold {
 	font-weight: 700;
 }
@@ -119,13 +131,30 @@ hr {
 	color: #000;
 }
 
+.contact-info-container p {
+	margin-bottom: 0;
+}
+
 .text-primary {
 	color: var(--color-primary) !important;
+}
+
+h4.article-details-biography {
+	text-transform: none;
+	font-weight: 400;
 }
 
 .img-cover {
 	height: 100%;
 	object-fit: cover;
+}
+
+.issue-summary-cover {
+	max-height: 250px;
+}
+
+.issue-summary-title {
+	text-decoration: none;
 }
 
 .navbar-toggler {

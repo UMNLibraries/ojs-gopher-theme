@@ -57,14 +57,19 @@
     {/if}
 {/if}
 
+{* Determine if button should take up full width if space *}
+{if !$fullWidthStacking}
+	{assign var=fullWidthStacking value=false}
+{/if}
+
 {* Don't be frightened. This is just a link *}
 {* TODO: Add btn class `{if $restricted} restricted{/if}` to flag galley as restricted *}
-<a class="btn btn-primary small article-btn" href="{url page=$page op="view" path=$path}"{if $labelledBy} aria-labelledby={$labelledBy}{/if}>
+<a class="btn btn-primary small article-btn {if $fullWidthStacking}w-100 mt-2{/if}" href="{url page=$page op="view" path=$path}"{if $labelledBy} aria-labelledby={$labelledBy}{/if}>
 	{if $type=="pdf"}<i class="fa-solid fa-file-pdf"></i>{/if}
 
 	{* Add some screen reader text to indicate if a galley is restricted *}
     {if $restricted}
-		<span class="pkp_screen_reader">
+		<span class="visually-hidden">
 			{if $purchaseArticleEnabled}
                 {translate key="reader.subscriptionOrFeeAccess"}
             {else}

@@ -45,6 +45,7 @@ class UmnThemePlugin extends ThemePlugin
 
 		// TODO: Should point to CDN minified version rather than local
 		$this->addScript('bootstrap-js', 'js/bootstrap.bundle.min.js');
+		$this->addScript('custom-js', 'js/custom.js');
 	}
 
 	/**

@@ -47,4 +47,6 @@
 	{include file="frontend/objects/issue_toc.tpl" labelAsCurrentIssue=true}
 </div>
 
+{* TODO: Add additional hompeage content $additionalHomeContent *}
+
 {include file="frontend/components/footer.tpl"}
