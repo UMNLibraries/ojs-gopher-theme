@@ -139,6 +139,7 @@
 			{/if}
 
 			{* How to cite *}
+			{* TODO: Formatting/style still causing issues *}
 			{if $citation}
 				<div class="container px-0 mt-4">
 					<h4>{translate key="submission.howToCite"}</h4>
@@ -191,7 +192,89 @@
 				</div>
 			{/if}
 
-			{* TODO: Add rest of sidebar content here *}
+			{if $issue}
+				<div class="container px-0 mt-4">
+					<h4>{translate key="issue.issue"}</h4>
+					<p>
+						<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+							{$issue->getIssueIdentification()}
+						</a>
+					</p>
+				</div>
+			{/if}
+
+			{if $section}
+				<div class="container px-0 mt-4">
+					<h4>{translate key="section.section"}</h4>
+					<p>
+						{$section->getLocalizedTitle|escape}
+					</p>
+				</div>
+			{/if}
+
+			{if $categories}
+				<div class="container px-0 mt-4">
+					<h4>{translate key="category.category"}</h4>
+					<ul class="list-unstyled">
+                        {foreach from=$categories item=category}
+							<li>
+								<a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$category->getPath()|escape}">
+									{$category->getLocalizedTitle()|escape}
+								</a>
+							</li>
+                        {/foreach}
+					</ul>
+				</div>
+			{/if}
+
+			{* PubIds (requires plugins) *}
+            {foreach from=$pubIdPlugins item=pubIdPlugin}
+                {if $pubIdPlugin->getPubIdType() == 'doi'}
+                    {continue}
+                {/if}
+
+                {assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
+				{if $pubId}
+					<div class="container px-4 mt-4">
+						<h4>{$pubIdPlugin->getPubIdDisplayType()|escape}</h4>
+						<p>
+                            {if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+								<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">
+                                    {$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+								</a>
+                            {else}
+                                {$pubId|escape}
+                            {/if}
+						</p>
+					</div>
+				{/if}
+			{/foreach}
+
+            {* Licensing info *}
+            {if $currentContext->getLocalizedData('licenseTerms') || $publication->getData('licenseUrl')}
+				<div class="container px-4 mt-4">
+					<h4>{translate key="submission.license"}</h4>
+                    {if $publication->getData('licenseUrl')}
+                        {if $ccLicenseBadge}
+                            {if $publication->getLocalizedData('copyrightHolder')}
+								<p>{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}</p>
+                            {/if}
+                            {$ccLicenseBadge}
+                        {else}
+							<a href="{$publication->getData('licenseUrl')|escape}" class="copyright">
+                                {if $publication->getLocalizedData('copyrightHolder')}
+                                    {translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}
+                                {else}
+                                    {translate key="submission.license"}
+                                {/if}
+							</a>
+                        {/if}
+                    {/if}
+                    {$currentContext->getLocalizedData('licenseTerms')}
+				</div>
+			{/if}
+
+            {call_hook name="Templates::Article::Details"}
 		</div>
 
 		{* Main content *}
