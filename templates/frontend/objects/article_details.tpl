@@ -207,7 +207,7 @@
 				<div class="container px-0 mt-4">
 					<h4>{translate key="section.section"}</h4>
 					<p>
-						{$section->getLocalizedTitle|escape}
+						{$section->getLocalizedTitle()|escape}
 					</p>
 				</div>
 			{/if}
