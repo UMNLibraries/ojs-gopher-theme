@@ -26,26 +26,41 @@ class UmnThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
+		$this->addOption('baseColour', 'FieldColor', [
+			'label' => __('plugins.themes.umn.option.colour.label'),
+			'description' => __('plugins.themes.umn.option.colour.description'),
+			'default' => '#7a0019'
+		]);
+
 		$this->addMenuArea(['primary', 'user']);
 
 		// CSS and JS
-		// TODO: Uncommented for dev
-//		$this->addStyle(
-//			'font-body',
-//			"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap",
-//			['baseUrl' => '']
-//		);
+		$this->addStyle(
+			'font-body',
+			"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap",
+			['baseUrl' => '']
+		);
 
 		// TODO: Should use minified version instead
 		$this->addStyle('font-awesome', 'css/fa_all.css');
 		$this->addStyle('bootstrap-css', 'css/bootstrap.min.css');
 		$this->addStyle('custom-css', 'css/custom.css');
+		$themeColor = $this->getOption('baseColour');
+		$this->addStyle(
+			'colors',
+			":root { --color-primary: $themeColor;}",
+			[
+				'inline' => true,
+			],
+		);
 
 		$this->addScript('jquery', 'js/jquery.js');
 
 		// TODO: Should point to CDN minified version rather than local
 		$this->addScript('bootstrap-js', 'js/bootstrap.bundle.min.js');
 		$this->addScript('custom-js', 'js/custom.js');
+
+		HookRegistry::register('TemplateManager::display', [$this, 'siteWideData']);
 	}
 
 	/**
@@ -68,4 +83,23 @@ class UmnThemePlugin extends ThemePlugin
 		return __('plugins.themes.umn.description');
 	}
 
+	/**
+	 * Injects data that is accessible site-wide into the template manager
+	 *
+	 * @param $hookName string
+	 * @param $args array [
+	 * 		@option TemplateManager
+	 * 		@option string relative path to the template
+	 * ]
+	 */
+	public function siteWideData($hoodName, $args)
+	{
+		$templateMgr = $args[0];
+		$request = Application::get()->getRequest();
+		$site = $request->getSite();
+		$templateMgr->assign(array(
+			'siteWideDisplayPageHeaderLogo' => $site->getLocalizedData('pageHeaderTitleImage'),
+			'siteWideDisplayPageHeaderLogoAltText' => $site->getLocalizedData('pageHeaderLogoImageAltText'),
+		));
+	}
 }

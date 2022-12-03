@@ -16,3 +16,9 @@ msgstr "UMN Theme"
 
 msgid "plugins.themes.umn.description"
 msgstr "An OJS theme designed for the University of Minnesota."
+
+msgid "plugins.themes.umn.option.colour.label"
+msgstr "Theme color"
+
+msgid "plugins.themes.umn.option.colour.description"
+msgstr "Choose a color for the theme. It should be a dark color with suitable contrast to contain white text."

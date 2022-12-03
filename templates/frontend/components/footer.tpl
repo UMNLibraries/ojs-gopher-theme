@@ -8,11 +8,14 @@
  * @brief Common frontend site header.
  *}
 
+{capture assign="sidebarCode"}{call_hook name="Templates::Common::Sidebar"}{/capture}
 
 <div class="container border-top mt-5 px-4 pb-4">
 	<div class="row mt-4 footer-additional-content">
 		<div class="col-md-6">
-			<p>Additional Content - embeds, widgets, images, maps, social media feeds</p>
+			{if $sidebarCode}
+				{$sidebarCode}
+			{/if}
 		</div>
 		<div class="col-md-6 border-start ps-md-5">
 			<p>Additional Content - embeds, widgets, images, maps, social media feeds</p>
@@ -25,11 +28,19 @@
 	<div class="container py-3">
 		<div class="row">
 			<div class="col-md-6">
-				<p>Additional Text</p>
+          		{if $pageFooter}
+					{$pageFooter}
+				{/if}
 				<p>Copyright Notice</p>
 			</div>
-			<div class="col-md-6 text-md-end text-center">
-				<img src="images/footer-logo.jpg" alt="" class="img-fluid">
+			<div class="col-md-6 text-md-end text-center" role="complementary">
+				<a href="{url page="about" op="aboutThisPublishingSystem"}">
+					<img
+						class="pkp-brand-footer"
+						alt="{translate key="about.aboutThisPublishingSystem"}"
+						src="{$baseUrl}/{$brandImage}"
+					>
+				</a>
 			</div>
 		</div>
 	</div>

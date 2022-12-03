@@ -1,13 +1,12 @@
 /* CSS Variables */
 :root {
 	--color-primary: #7a0019;
-	font-size: 16px;
 }
 
 
 body {
 	font-family: 'Noto Sans', sans-serif;
-	/*font-size: 18px;*/
+	font-size: 18px;
 	color: #333333;
 }
 
@@ -146,7 +145,8 @@ h4.article-details-biography {
 
 .img-cover {
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
+	max-height: 20em;
 }
 
 .issue-summary-cover {
@@ -286,6 +286,15 @@ label {
 	font-weight: 700;
 	text-transform: uppercase;
 	text-decoration: none;
+}
+
+.pkp-brand-footer {
+	max-width: 150px;
+}
+
+ul.site-index-quick-links li {
+	display: inline;
+	margin-inline-end: 0.5rem;
 }
 
 @media (min-width: 1400px) {

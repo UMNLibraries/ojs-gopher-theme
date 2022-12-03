@@ -17,7 +17,7 @@
 <section class="header container-fluid py-4">
 	<div class="container px-3 px-md-4">
 		<div class="row align-items-center align-items-md-start">
-			<div class="col-sm-5 ps-md-3 p-0"><img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="" class="img-fluid"></div>
+			<div class="col-sm-5 ps-md-3 p-0"><img src="{$sitePublicFilesDir}/{$siteWideDisplayPageHeaderLogo.uploadName|escape:"url"}" alt="{$siteWideDisplayPageHeaderLogoAltText|escape}" class="img-fluid"></div>
 			<div class="col-sm-7 text-end right-col pe-0 pe-md-2 mt-sm-0 mt-4">
 				{load_menu name="user" path="frontend/components/userNavigationMenu.tpl"}
 			</div>
@@ -27,11 +27,18 @@
 
 <section class="container shadow p-0">
 	<div class="container page-header py-3 py-lg-4 px-4">
+		{capture assign="homeUrl"}
+			{url page="index" router=$smarty.const.ROUTE_PAGE}
+		{/capture}
 		<h1>
             {if $currentContext}
-                {$displayPageHeaderTitle|escape}
+				<a class="heading-link" href="{$homeUrl}"}>
+                	{$displayPageHeaderTitle|escape}
+				</a>
             {else}
-                {$siteTitle|escape}
+				<a class="heading-link" href="{$homeUrl}"}>
+                	{$siteTitle|escape}
+				</a>
             {/if}
 		</h1>
 	</div>

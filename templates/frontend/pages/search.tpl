@@ -61,8 +61,7 @@
 					</label>
 					<div id="dateFrom">
 						{* TODO: From and after require custom CSS to bring in-line with stylings *}
-						{capture assign="dateFromLegend"}{translate key="search.dateFrom"}{/capture}
-						{html_select_date_a11y legend=$dateFromLegend prefix="dateFrom" time=$dateFrom start_year=$yearStart end_year=$yearEnd}
+                        {html_select_date prefix="dateFrom" time=$dateFrom start_year=$yearStart end_year=$yearEnd year_empty="" month_empty="" day_empty="" field_order="YMD"}
 					</div>
 				</div>
 
@@ -72,8 +71,7 @@
 						{translate key="search.dateTo"}
 					</label>
 					<div id="dateFrom">
-						{capture assign="dateFromTo"}{translate key="search.dateTo"}{/capture}
-						{html_select_date_a11y legend=$dateFromTo prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd}
+                        {html_select_date prefix="dateTo" time=$dateTo start_year=$yearStart end_year=$yearEnd year_empty="" month_empty="" day_empty="" field_order="YMD"}
 					</div>
 				</div>
 
@@ -120,6 +118,26 @@
                 {translate key="search.searchResults.foundSingle"}
             {/if}
 		</div>
+    {/if}
+
+	{* Search results, finally! *}
+    {iterate from=results item=result}
+        {include file="frontend/objects/article_summary.tpl" headingLevel="h1" article=$result.publishedSubmission journal=$result.journal showDatePublished=true hideGalleys=true hideAbstract=true}
+    {/iterate}
+
+    {* No results found *}
+    {if $results->wasEmpty()}
+        {if $error}
+            {include file="frontend/components/notification.tpl" type="error" message=$error|escape}
+        {else}
+            {include file="frontend/components/notification.tpl" type="secondary" messageKey="search.noResults"}
+        {/if}
+
+        {* Results pagination *}
+    {else}
+		<hr>
+        {page_info iterator=$results}
+        {page_links anchor="results" iterator=$results name="search" query=$query searchJournal=$searchJournal authors=$authors dateFromMonth=$dateFromMonth dateFromDay=$dateFromDay dateFromYear=$dateFromYear dateToMonth=$dateToMonth dateToDay=$dateToDay dateToYear=$dateToYear}
     {/if}
 </div>
 

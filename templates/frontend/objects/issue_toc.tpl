@@ -43,7 +43,7 @@
 		{assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
 
 		{if $issueCover}
-			<div class="col-xl-2 col-lg-4 col-5 mb-3 mb-md-0">
+			<div class="col-xl-2 col-lg-4 col-md-5 mb-3 mb-md-0">
 				<a href="{url op="view" page="issue" path=$issue->getBestIssueId()}">
                     {capture assign="defaultAltText"}
                         {translate key="issue.viewIssueIdentification" identification=$issue->getIssueIdentification()|escape}
@@ -53,7 +53,7 @@
 			</div>
 		{/if}
 
-		<div class="col-xl-10 col-lg-8 col-7">
+		<div class="{if $issueCover}col-xl-10 col-lg-8 col-md-7{/if}">
 			{if $labelAsCurrentIssue}
 				<p class="bold m-0">{$issue->getIssueIdentification()|strip_unsafe_html}</p>
 			{/if}

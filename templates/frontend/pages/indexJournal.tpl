@@ -24,15 +24,27 @@
 <div class="container px-4 home-sec-1">
 	{* TODO: Sort out rest of index page content *}
 	<div class="row">
-		<div class="col-xl-5 col-md-6 mb-3 mb-md-0">
-			<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="" class="w-100 img-cover">
-		</div>
-		<div class="col-xl-7 col-md-6">
-			<p class="bold">ISSN: 0000-0000</p>
-			<p>Additional Content (from advanced, appearance, website settings) - former sidebar content and
-				information (character limited? Font size 14pt or equivalent).</p>
-			<h2 class="mt-4">SUBHEAD (H2) </h2>
-			<p>Make sure to have the <a href="#" class="btn-link ">possibility</a> to add subheads here as well. </p>
+		{if !empty($displayPageHeaderLogo)}
+			<div class="col-xl-5 col-md-6 mb-3 mb-md-0">
+				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="" class="w-100 img-cover">
+			</div>
+		{/if}
+		<div class="{if !empty($displayPageHeaderLogo)}col-xl-7 col-md-6{/if}">
+
+			{if $currentJournal->getData('onlineIssn')}
+				{assign var=issn value=$currentJournal->getData('onlineIssn')}
+			{elseif $currentJournal->getData('printIssn')}
+                {assign var=issn value=$journal->getData('printIssn')}
+			{else}
+				{assign var=issn value=""}
+			{/if}
+
+			{if !empty($issn)}
+				<p class="bold">ISSN: {$issn}</p>
+			{/if}
+			{if $additionalHomeContent}
+				{$additionalHomeContent}
+			{/if}
 		</div>
 	</div>
 	<div class="row pt-3">
