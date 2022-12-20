@@ -175,13 +175,9 @@
 
 			{* PubIds (requires plugins) *}
             {foreach from=$pubIdPlugins item=pubIdPlugin}
-                {if $pubIdPlugin->getPubIdType() == 'doi'}
-                    {continue}
-                {/if}
-
                 {assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
 				{if $pubId}
-					<div class="container px-4 mt-4">
+					<div class="container px-0 mt-4">
 						<h4>{$pubIdPlugin->getPubIdDisplayType()|escape}</h4>
 						<p>
                             {if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
