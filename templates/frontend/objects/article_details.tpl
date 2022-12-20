@@ -68,7 +68,7 @@
 <article class="container mt-4 mt-md-5 px-4">
 	<div class="row flex-column-reverse flex-md-row g-md-5">
 		{* Left sidebar *}
-		<div class="col-xxl-2 col-md-4 sidebar-left">
+		<div class="col-xxl-3 col-md-4 sidebar-left">
 			{* Article/Issue cover image *}
             {if $publication->getLocalizedData('coverImage') || ($issue && $issue->getLocalizedCoverImage())}
 				{if $publication->getLocalizedData('coverImage')}
@@ -138,60 +138,6 @@
 				{/if}
 			{/if}
 
-			{* How to cite *}
-			{* TODO: Formatting/style still causing issues *}
-			{if $citation}
-				<div class="container px-0 mt-4">
-					<h4>{translate key="submission.howToCite"}</h4>
-					<div id="citationOutput" role="region" aria-live="polite">
-                        {$citation}
-					</div>
-					<div class="dropdown my-3">
-						<button
-							class="btn btn-secondary dropdown-toggle"
-							id="citationFormatsDropdown"
-							aria-controls="cslCitationFormats"
-							aria-expanded="false"
-							data-csl-dropdown="true"
-							data-bs-toggle="dropdown"
-							type="button"
-						>
-							{translate key="submission.howToCite.citationFormats"}
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="citationFormatsDropdown">
-							{foreach from=$citationStyles item="citationStyle"}
-								<li>
-									<a
-										class="dropdown-item"
-										aria-controls="citationOutput"
-										href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
-										data-load-citation
-										data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
-									>
-                                        {$citationStyle.title|escape}
-									</a>
-								</li>
-							{/foreach}
-                            {if count($citationDownloads)}
-								<li><hr class="dropdown-divider"></li>
-								<li><span class="dropdown-item">{translate key="submission.howToCite.downloadCitation"}</span></li>
-                                {foreach from=$citationDownloads item="citationDownload"}
-									<li>
-										<a
-											class="dropdown-item"
-											href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}"
-										>
-											<span class="fa fa-download"></span>
-                                            {$citationDownload.title|escape}
-										</a>
-									</li>
-                                {/foreach}
-                            {/if}
-						</ul>
-					</div>
-				</div>
-			{/if}
-
 			{if $issue}
 				<div class="container px-0 mt-4">
 					<h4>{translate key="issue.issue"}</h4>
@@ -252,7 +198,7 @@
 
             {* Licensing info *}
             {if $currentContext->getLocalizedData('licenseTerms') || $publication->getData('licenseUrl')}
-				<div class="container px-4 mt-4">
+				<div class="container px-0 mt-4">
 					<h4>{translate key="submission.license"}</h4>
                     {if $publication->getData('licenseUrl')}
                         {if $ccLicenseBadge}
@@ -274,11 +220,66 @@
 				</div>
 			{/if}
 
-            {call_hook name="Templates::Article::Details"}
+            {* How to cite *}
+            {if $citation}
+				<div class="container px-0 mt-4">
+					<h4>{translate key="submission.howToCite"}</h4>
+					<div id="citationOutput" role="region" aria-live="polite">
+                        {$citation}
+					</div>
+					<div class="dropdown my-3">
+						<button
+								class="btn btn-secondary dropdown-toggle"
+								id="citationFormatsDropdown"
+								aria-controls="cslCitationFormats"
+								aria-expanded="false"
+								data-csl-dropdown="true"
+								data-bs-toggle="dropdown"
+								type="button"
+						>
+                            {translate key="submission.howToCite.citationFormats"}
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="citationFormatsDropdown">
+                            {foreach from=$citationStyles item="citationStyle"}
+								<li>
+									<a
+											class="dropdown-item"
+											aria-controls="citationOutput"
+											href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+											data-load-citation
+											data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+									>
+                                        {$citationStyle.title|escape}
+									</a>
+								</li>
+                            {/foreach}
+                            {if count($citationDownloads)}
+								<li><hr class="dropdown-divider"></li>
+								<li><span class="dropdown-item">{translate key="submission.howToCite.downloadCitation"}</span></li>
+                                {foreach from=$citationDownloads item="citationDownload"}
+									<li>
+										<a
+												class="dropdown-item"
+												href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}"
+										>
+											<span class="fa fa-download"></span>
+                                            {$citationDownload.title|escape}
+										</a>
+									</li>
+                                {/foreach}
+                            {/if}
+						</ul>
+					</div>
+				</div>
+            {/if}
+
+			<div class="container px-0 mt-4">
+            	{call_hook name="Templates::Article::Details"}
+			</div>
 		</div>
 
 		{* Main content *}
-		<div class="col-xxl-10 col-md-8 ps-md-4 mb-4 mb-md-0">
+		<div class="col-xxl-9 col-md-8 ps-md-4 mb-4 mb-md-0">
 			{* Heading *}
 			<h2>
 				{$publication->getLocalizedTitle()|escape}

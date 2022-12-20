@@ -34,7 +34,7 @@
 			{if $currentJournal->getData('onlineIssn')}
 				{assign var=issn value=$currentJournal->getData('onlineIssn')}
 			{elseif $currentJournal->getData('printIssn')}
-                {assign var=issn value=$journal->getData('printIssn')}
+                {assign var=issn value=$currentJournal->getData('printIssn')}
 			{else}
 				{assign var=issn value=""}
 			{/if}
@@ -42,23 +42,22 @@
 			{if !empty($issn)}
 				<p class="bold">ISSN: {$issn}</p>
 			{/if}
-			{if $additionalHomeContent}
-				{$additionalHomeContent}
+			{if $currentContext->getLocalizedDescription()}
+				{$currentContext->getLocalizedDescription()}
 			{/if}
 		</div>
 	</div>
-	<div class="row pt-3">
-		<div class="col-xl-5 col-md-6 d-flex justify-content-between">
-			<a href="#" class="btn btn-primary w-50 me-2">Optional Button</a>
-			<a href="#" class="btn btn-secondary w-50 ms-2">Optional Button</a>
+    {if !$currentContext->getData('disableSubmissions')}
+		<div class="row pt-3">
+			<div class="col-xl-5 col-md-6 d-flex justify-content-between">
+				<a href="{url page="about" op="submissions"}" class="btn btn-primary w-50 me-2">{translate key="plugins.themes.umn.makeSubmission"}</a>
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <div class="border-top">
 	{include file="frontend/objects/issue_toc.tpl" labelAsCurrentIssue=true}
 </div>
-
-{* TODO: Add additional hompeage content $additionalHomeContent *}
 
 {include file="frontend/components/footer.tpl"}

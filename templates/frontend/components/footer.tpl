@@ -10,30 +10,34 @@
 
 {capture assign="sidebarCode"}{call_hook name="Templates::Common::Sidebar"}{/capture}
 
-<div class="container border-top mt-5 px-4 pb-4">
-	<div class="row mt-4 footer-additional-content">
-		<div class="col-md-6">
+{assign var=additionalHomeContent value=$currentContext->getLocalizedData("additionalHomeContent")}
+<div class="container {if $sidebarCode || $additionalHomeContent}border-top {/if}mt-5 px-4 pb-4">
+	{if $sidebarCode || $additionalHomeContent}
+		<div class="row mt-4 footer-additional-content">
 			{if $sidebarCode}
-				{$sidebarCode}
+				<div class="{if $additionalHomeContent}col-md-6{else}col-12{/if}">
+					{$sidebarCode}
+				</div>
+			{/if}
+			{if $additionalHomeContent}
+				<div class="{if $sidebarCode}col-md-6 border-start ps-md-5{else}col-12{/if}">
+					{$additionalHomeContent|strip_unsafe_html}
+				</div>
 			{/if}
 		</div>
-		<div class="col-md-6 border-start ps-md-5">
-			<p>Additional Content - embeds, widgets, images, maps, social media feeds</p>
-		</div>
-	</div>
+	{/if}
 </div>
 </section>
 
 <section class="footer container-fluid">
 	<div class="container py-3">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-12">
           		{if $pageFooter}
 					{$pageFooter}
 				{/if}
-				<p>Copyright Notice</p>
 			</div>
-			<div class="col-md-6 text-md-end text-center" role="complementary">
+			<div class="col-12 text-md-end text-center" role="complementary">
 				<a href="{url page="about" op="aboutThisPublishingSystem"}">
 					<img
 						class="pkp-brand-footer"

@@ -14,7 +14,7 @@
 
 <div class="col-md-8 mt-4 mt-md-5 px-4">
 	<h2 class="mb-5">
-		{translate key="user.login"}
+        {translate key="user.login"}
 	</h2>
 
 	{* A login message may be displayed if the user was redireceted to the

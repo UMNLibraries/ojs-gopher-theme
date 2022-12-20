@@ -45,7 +45,15 @@
 	<div class="container border-bottom menu-row px-xl-4 px-2 position-relative">
 		<nav class="navbar navbar-expand-xl navbar-dark">
 			<div class="container-fluid p-0">
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#collapsibleNavbar"
+					aria-controls="collapsibleNavbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">

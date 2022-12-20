@@ -22,3 +22,6 @@ msgstr "Theme color"
 
 msgid "plugins.themes.umn.option.colour.description"
 msgstr "Choose a color for the theme. It should be a dark color with suitable contrast to contain white text."
+
+msgid "plugins.themes.umn.makeSubmission"
+msgstr "Make a Submission"

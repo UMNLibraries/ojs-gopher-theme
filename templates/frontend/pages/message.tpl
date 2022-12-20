@@ -19,13 +19,13 @@
 
 	<div class="row">
         {if $messageTranslated}
-            {$messageTranslated}
+			<p>{$messageTranslated}</p>
         {else}
-            {translate key=$message}
+			<p>{translate key=$message}</p>
         {/if}
 
 		{if $backLink}
-			<a href="{$backLink}">{translate key=$backLinkLabel}</a>
+			<p><a href="{$backLink}">{translate key=$backLinkLabel}</a></p>
 		{/if}
 	</div>
 </div>
