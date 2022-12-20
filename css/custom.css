@@ -387,6 +387,10 @@ ul.site-index-quick-links li {
 	margin-right: 15px;
 }
 
+.csl-entry {
+	word-break: break-word;
+}
+
 @media (max-width: 1399px) {
 	nav.navbar .nav-link {
 		font-size: 0.9375rem;
