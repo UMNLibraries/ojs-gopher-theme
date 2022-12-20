@@ -50,7 +50,7 @@
     {if !$currentContext->getData('disableSubmissions')}
 		<div class="row pt-3">
 			<div class="col-xl-5 col-md-6 d-flex justify-content-between">
-				<a href="{url page="about" op="submissions"}" class="btn btn-primary w-50 me-2">{translate key="plugins.themes.umn.makeSubmission"}</a>
+				<a href="{url page="about" op="submissions"}" class="btn btn-primary w-50 me-2">{translate key="plugins.themes.gopher.makeSubmission"}</a>
 			</div>
 		</div>
 	{/if}

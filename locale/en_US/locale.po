@@ -11,17 +11,17 @@ msgstr ""
 "PO-Revision-Date: 2022-11-16T00:00:00+00:00\n"
 "Language: \n"
 
-msgid "plugins.themes.umn.name"
-msgstr "UMN Theme"
+msgid "plugins.themes.gopher.name"
+msgstr "Gopher Theme"
 
-msgid "plugins.themes.umn.description"
+msgid "plugins.themes.gopher.description"
 msgstr "An OJS theme designed for the University of Minnesota."
 
-msgid "plugins.themes.umn.option.colour.label"
+msgid "plugins.themes.gopher.option.colour.label"
 msgstr "Theme color"
 
-msgid "plugins.themes.umn.option.colour.description"
+msgid "plugins.themes.gopher.option.colour.description"
 msgstr "Choose a color for the theme. It should be a dark color with suitable contrast to contain white text."
 
-msgid "plugins.themes.umn.makeSubmission"
+msgid "plugins.themes.gopher.makeSubmission"
 msgstr "Make a Submission"

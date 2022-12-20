@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @file plugins/themes/umn/UmnThemePlugin.inc.php
+ * @file plugins/themes/gopher/GopherThemePlugin.inc.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @class UmnThemePlugin
- * @ingroup plugins_themes_umn
+ * @class GopherThemePlugin
+ * @ingroup plugins_themes_gopher
  *
- * @brief UMN theme
+ * @brief Gopher theme
  */
 
 import('lib.pkp.classes.plugins.ThemePlugin');
 
-class UmnThemePlugin extends ThemePlugin
+class GopherThemePlugin extends ThemePlugin
 {
 	/**
 	 * The primary method themes should use to add styles, scripts and fonts,
@@ -27,8 +27,8 @@ class UmnThemePlugin extends ThemePlugin
 	public function init()
 	{
 		$this->addOption('baseColour', 'FieldColor', [
-			'label' => __('plugins.themes.umn.option.colour.label'),
-			'description' => __('plugins.themes.umn.option.colour.description'),
+			'label' => __('plugins.themes.gopher.option.colour.label'),
+			'description' => __('plugins.themes.gopher.option.colour.description'),
 			'default' => '#7a0019'
 		]);
 
@@ -70,7 +70,7 @@ class UmnThemePlugin extends ThemePlugin
 	 */
 	public function getDisplayName()
 	{
-		return __('plugins.themes.umn.name');
+		return __('plugins.themes.gopher.name');
 	}
 
 	/**
@@ -80,7 +80,7 @@ class UmnThemePlugin extends ThemePlugin
 	 */
 	public function getDescription()
 	{
-		return __('plugins.themes.umn.description');
+		return __('plugins.themes.gopher.description');
 	}
 
 	/**

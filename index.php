@@ -1,20 +1,20 @@
 <?php
 
 /**
- * @file plugins/themes/umn/index.php
+ * @file plugins/themes/gopher/index.php
  *
  * Copyright (c) 2014-2022 Simon Fraser University
  * Copyright (c) 2003-2022 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @ingroup plugins_themes_umn
- * @brief Wrapper for UMN theme plugin.
+ * @ingroup plugins_themes_gopher
+ * @brief Wrapper for Gopher theme plugin.
  *
  */
 
-require_once('UmnThemePlugin.inc.php');
+require_once('GopherThemePlugin.inc.php');
 
-return new UmnThemePlugin();
+return new GopherThemePlugin();
 
 ?>
 
