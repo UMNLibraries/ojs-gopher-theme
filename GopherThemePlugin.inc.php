@@ -32,6 +32,11 @@ class GopherThemePlugin extends ThemePlugin
 			'default' => '#7a0019'
 		]);
 
+		$this->addOption('additionalFooterInfo', 'FieldRichTextarea', [
+			'label' => __('plugins.themes.gopher.option.footerInfo.label'),
+			'description' => __('plugins.themes.gopher.option.footerInfo.description'),
+		]);
+
 		$this->addMenuArea(['primary', 'user']);
 
 		// CSS and JS

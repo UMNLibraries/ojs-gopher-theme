@@ -25,3 +25,9 @@ msgstr "Choose a color for the theme. It should be a dark color with suitable co
 
 msgid "plugins.themes.gopher.makeSubmission"
 msgstr "Make Submission"
+
+msgid "plugins.themes.gopher.option.footerInfo.label"
+msgstr "Additional Footer Text"
+
+msgid "plugins.themes.gopher.option.footerInfo.description"
+msgstr "Text that will appear above the footer on all pages except the home page."

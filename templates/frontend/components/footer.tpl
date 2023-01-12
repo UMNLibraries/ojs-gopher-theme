@@ -10,18 +10,22 @@
 
 {capture assign="sidebarCode"}{call_hook name="Templates::Common::Sidebar"}{/capture}
 
-{assign var=additionalHomeContent value=$currentContext->getLocalizedData("additionalHomeContent")}
-<div class="container {if $sidebarCode || $additionalHomeContent}border-top {/if}mt-5 px-4 pb-4">
-	{if $sidebarCode || $additionalHomeContent}
+{if $requestedPage == 'index'}
+	{assign var=additionalFooterContent value=$currentContext->getLocalizedData("additionalHomeContent")}
+{else}
+    {assign var=additionalFooterContent value=$activeTheme->getOption("additionalFooterInfo")}
+{/if}
+<div class="container {if $sidebarCode || $additionalFooterContent}border-top {/if}mt-5 px-4 pb-4">
+	{if $sidebarCode || $additionalFooterContent}
 		<div class="row mt-4 footer-additional-content">
 			{if $sidebarCode}
-				<div class="{if $additionalHomeContent}col-md-6{else}col-12{/if}">
+				<div class="{if $additionalFooterContent}col-md-6{else}col-12{/if}">
 					{$sidebarCode}
 				</div>
 			{/if}
-			{if $additionalHomeContent}
+			{if $additionalFooterContent}
 				<div class="{if $sidebarCode}col-md-6 border-start ps-md-5{else}col-12{/if}">
-					{$additionalHomeContent|strip_unsafe_html}
+					{$additionalFooterContent|strip_unsafe_html}
 				</div>
 			{/if}
 		</div>
