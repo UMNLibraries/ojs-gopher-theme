@@ -47,8 +47,7 @@ class GopherThemePlugin extends ThemePlugin
 			['baseUrl' => '']
 		);
 
-		// FIXME: Should use minified version instead
-		$this->addStyle('font-awesome', 'css/fa_all.css');
+		$this->addStyle('font-awesome', 'css/fa_all.min.css');
 		$this->addStyle('bootstrap-css', 'css/bootstrap.min.css');
 		$this->addStyle('custom-css', 'css/custom.css');
 		$themeColor = $this->getOption('baseColour');
@@ -62,7 +61,7 @@ class GopherThemePlugin extends ThemePlugin
 
 		$this->addScript('jquery', 'js/jquery.js');
 
-		// FIXME: Should point to CDN minified version rather than local
+		// FIXME: Could point to CDN minified version rather than local
 		$this->addScript('bootstrap-js', 'js/bootstrap.bundle.min.js');
 		$this->addScript('custom-js', 'js/custom.js');
 
