@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2023 Simon Fraser University
  * Copyright (c) 2023 University of Minnesota
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * @class GopherThemePlugin
  * @ingroup plugins_themes_gopher
