@@ -47,6 +47,7 @@ class GopherThemePlugin extends ThemePlugin
 		);
 
 		$this->addStyle('font-awesome', 'css/fa_all.min.css');
+		$this->addStyle('font-face', 'css/v4-font-face.css');
 		$this->addStyle('bootstrap-css', 'css/bootstrap.min.css');
 		$this->addStyle('custom-css', 'css/custom.css');
 		$themeColor = $this->getOption('baseColour');
@@ -101,9 +102,17 @@ class GopherThemePlugin extends ThemePlugin
 		$templateMgr = $args[0];
 		$request = Application::get()->getRequest();
 		$site = $request->getSite();
+
+		$issueDao = DAORegistry::getDAO("IssueDAO");
+		$journal = $request->getContext();
+		$currentIssue = null;
+		if ($journal)
+			$currentIssue = $issueDao->getCurrent($journal->getId());
+
 		$templateMgr->assign(array(
 			'siteWideDisplayPageHeaderLogo' => $site->getLocalizedData('pageHeaderTitleImage'),
 			'siteWideDisplayPageHeaderLogoAltText' => $site->getLocalizedData('pageHeaderLogoImageAltText'),
+			'currentIssue' => $currentIssue,
 		));
 	}
 }

@@ -50,11 +50,14 @@
 				</li>
 			{else}
 				<li class="nav-item">
-
-				</li>
 				<a class="nav-link" href="{$navigationMenuItemAssignment->navigationMenuItem->getUrl()}">
-					{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}
+					{if $navigationMenuItemAssignment->navigationMenuItem->getTitleLocaleKey() != 'navigation.current'}
+						{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}
+					{else}
+						{if $currentIssue}{$navigationMenuItemAssignment->navigationMenuItem->getLocalizedTitle()}{/if}
+					{/if}
 				</a>
+				</li>
 			{/if}
 		{/foreach}
 	</ul>
