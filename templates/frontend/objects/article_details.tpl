@@ -173,25 +173,6 @@
 				</div>
 			{/if}
 
-			{* PubIds (requires plugins) *}
-            {foreach from=$pubIdPlugins item=pubIdPlugin}
-                {assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
-				{if $pubId}
-					<div class="container px-0 mt-4">
-						<h4>{$pubIdPlugin->getPubIdDisplayType()|escape}</h4>
-						<p>
-                            {if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-								<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">
-                                    {$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-								</a>
-                            {else}
-                                {$pubId|escape}
-                            {/if}
-						</p>
-					</div>
-				{/if}
-			{/foreach}
-
             {* Licensing info *}
             {if $currentContext->getLocalizedData('licenseTerms') || $publication->getData('licenseUrl')}
 				<div class="container px-0 mt-4">
