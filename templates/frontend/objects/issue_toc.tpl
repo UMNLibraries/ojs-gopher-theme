@@ -25,6 +25,7 @@
 	{/if}
 
 	<div class="row">
+	{if $issue->getPublished()}
 		<h2>
 			{if $labelAsCurrentIssue}
 				{translate key="journal.currentIssue"}
@@ -32,6 +33,7 @@
 				{$issue->getIssueIdentification()|strip_unsafe_html}
 			{/if}
 		</h2>
+	{/if}
 
 		{* TODO: Investigate margin/spacing around alert to see if too crowded *}
         {* Indicate if this is only a preview *}
