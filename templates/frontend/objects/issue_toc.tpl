@@ -122,7 +122,7 @@
 <div class="container px-4 pt-2 pt-md-4">
 	<hr class="mb-1">
 	<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}" class="btn btn-link chevron-btn">
-        {translate key="journal.viewAllIssues"} <i class="fa-solid fa-chevron-right"></i>
+        {translate key="journal.viewAllIssues"} <i class="fa fa-chevron-right" aria-hidden="true"></i>
 	</a>
 </div>
 
