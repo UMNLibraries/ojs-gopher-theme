@@ -3,7 +3,6 @@
 	--color-primary: #7a0019;
 }
 
-
 body {
 	font-family: 'Noto Sans', sans-serif;
 	font-size: 18px;
@@ -370,7 +369,7 @@ ul.site-index-quick-links li {
 }
 
 .footer {
-	background-color: #f0efee;
+	background-color: #f5f5f5;
 }
 
 .bottom-bar {

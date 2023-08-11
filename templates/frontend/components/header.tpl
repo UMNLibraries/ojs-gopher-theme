@@ -17,7 +17,11 @@
 <section class="header container-fluid py-4">
 	<div class="container px-3 px-md-4">
 		<div class="row align-items-center align-items-md-start">
-			<div class="col-sm-5 ps-md-3 p-0"><img src="{$sitePublicFilesDir}/{$siteWideDisplayPageHeaderLogo.uploadName|escape:"url"}" alt="{$siteWideDisplayPageHeaderLogoAltText|escape}" class="img-fluid"></div>
+			<div class="col-sm-5 ps-md-3 p-0">
+				{if $siteWideDisplayPageHeaderLogo}
+				<img src="{$sitePublicFilesDir}/{$siteWideDisplayPageHeaderLogo.uploadName|escape:"url"}" alt="{$siteWideDisplayPageHeaderLogoAltText|escape}" class="img-fluid">
+				{/if}
+			</div>
 			<div class="col-sm-7 text-end right-col pe-0 pe-md-2 mt-sm-0 mt-4">
 				{load_menu name="user" path="frontend/components/userNavigationMenu.tpl"}
 			</div>
