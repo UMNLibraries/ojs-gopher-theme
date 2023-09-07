@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-09-07T00:00:00+00:00\n"
+"PO-Revision-Date: 2023-09-07T00:00:00+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.gopher.name"
+msgstr "Thème Gopher"
+
+msgid "plugins.themes.gopher.description"
+msgstr "Un thème OJS réalisé pour l'université du Minnesota."
+
+msgid "plugins.themes.gopher.option.colour.label"
+msgstr "Couleur du thème"
+
+msgid "plugins.themes.gopher.option.colour.description"
+msgstr "Choisir une couleur pour le thème. Ce doit être une couleur sombre avec un contraste compatible avec un texte blanc."
+
+msgid "plugins.themes.gopher.makeSubmission"
+msgstr "Soumettre"
+
+msgid "plugins.themes.gopher.option.footerInfo.label"
+msgstr "Texte additionnel du pied de page"
+
+msgid "plugins.themes.gopher.option.footerInfo.description"
+msgstr "Texte qui apparaitra sur le pied de page de toutes les pages sauf la page d'accueil."
