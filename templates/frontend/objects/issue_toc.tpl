@@ -97,11 +97,13 @@
 			{if $issue->hasDescription()}
 				{$issue->getLocalizedDescription()|strip_unsafe_html}
 			{/if}
+			{* Full-issue galleys *}
+			{foreach from=$issueGalleys item=galley}
+				{include file="frontend/objects/galley_link.tpl" parent=$issue purchaseFee=$currentJournal->getSetting('purchaseIssueFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+			{/foreach}
 		</div>
 	</div>
 </div>
-
-{* TODO: Full-issue galleys *}
 
 {* Articles *}
 {foreach name=sections from=$publishedSubmissions item=section}
