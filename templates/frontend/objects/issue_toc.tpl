@@ -101,7 +101,21 @@
 	</div>
 </div>
 
-{* TODO: Full-issue galleys *}
+{* full issue galleys *}
+{* ak added 2025-03-25 to fix "todo issue toc" *}
+{if $issueGalleys}
+        <section class="issue-galleys" style="padding-left:1.5rem;">
+                <hr/>
+                <h2 class="issue-galleys__title">
+                        {translate key="issue.fullIssue"}
+                </h2>
+                {foreach from=$issueGalleys item=galley}
+                        {include file="frontend/objects/galley_link.tpl" parent=$issue labelledBy="issueTocGalleyLabel" purchaseFee=$currentJ
+ournal->getData('purchaseIssueFee') purchaseCurrency=$currentJournal->getData('currency')}
+                {/foreach}
+        </section>
+{/if}
+
 
 {* Articles *}
 {foreach name=sections from=$publishedSubmissions item=section}
