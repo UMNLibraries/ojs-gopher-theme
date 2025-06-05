@@ -110,8 +110,7 @@
                         {translate key="issue.fullIssue"}
                 </h2>
                 {foreach from=$issueGalleys item=galley}
-                        {include file="frontend/objects/galley_link.tpl" parent=$issue labelledBy="issueTocGalleyLabel" purchaseFee=$currentJ
-ournal->getData('purchaseIssueFee') purchaseCurrency=$currentJournal->getData('currency')}
+                        {include file="frontend/objects/galley_link.tpl" parent=$issue labelledBy="issueTocGalleyLabel" purchaseFee=$currentJournal->getData('purchaseIssueFee') purchaseCurrency=$currentJournal->getData('currency')}
                 {/foreach}
         </section>
 {/if}
