@@ -51,6 +51,11 @@ class GopherThemePlugin extends ThemePlugin
 		$this->addStyle('bootstrap-css', 'css/bootstrap.min.css');
 		$this->addStyle('custom-css', 'css/custom.css');
 		$themeColor = $this->getOption('baseColour');
+
+		if (!preg_match('/^#[0-9a-fA-F]{1,6}$/', $themeColor)) {
+			$themeColor = '#1E6292';
+		}
+
 		$this->addStyle(
 			'colors',
 			":root { --color-primary: $themeColor;}",
@@ -114,5 +119,14 @@ class GopherThemePlugin extends ThemePlugin
 			'siteWideDisplayPageHeaderLogoAltText' => $site->getLocalizedData('pageHeaderLogoImageAltText'),
 			'currentIssue' => $currentIssue,
 		));
+	}
+
+	/** @copydoc ThemePlugin::saveOption */
+	public function saveOption($name, $value, $contextId = null) {
+		if ($name == 'baseColour' && !preg_match('/^#[0-9a-fA-F]{1,6}$/', $value)) {
+			$value = null;
+		}
+
+		parent::saveOption($name, $value, $contextId);
 	}
 }
